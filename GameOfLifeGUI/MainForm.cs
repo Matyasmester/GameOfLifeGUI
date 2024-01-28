@@ -229,44 +229,34 @@ namespace GameOfLifeGUI
 
         private void SaveStateToFile(string path)
         {
-            /*string toWrite = "";
+            string toWrite = "";
 
             for(int i = 0; i < sideBarBeginsAt; i += rectSide)
             {
                 for(int k = 0; k < this.Height; k += rectSide)
                 {
-                    toWrite += Map[i, k];
+                    if (Map[i, k] == Alive) toWrite += (i + " " + k) + Environment.NewLine;
                 }
-
-                toWrite += Environment.NewLine;
             }
 
-            File.WriteAllText(path, toWrite);*/
+            File.WriteAllText(path, toWrite);
         }
 
         private void LoadStateFromFile(string path)
         {
-            /*if (Path.GetExtension(path) != ".gol") return;
+            if (Path.GetExtension(path) != ".gol") return;
 
             List<string> lines = File.ReadAllLines(path).ToList();
 
-            int x = 0;
-            int y = 0;
-            
             foreach(string line in lines)
             {
-                foreach(char c in line)
-                {
-                    if (y == this.Height) return;
+                string[] split = line.Split(' ');
 
-                    if (c == Alive) Revive(x, y);
-                    else { Kill(x, y); }
+                int x = int.Parse(split[0]);
+                int y = int.Parse(split[1]);
 
-                    x += rectSide;
-                }
-                y += rectSide;
-                x = 0;
-            }*/
+                Revive(x, y);
+            }
         }
 
         private void SaveStateButton_Click(object sender, EventArgs e)
