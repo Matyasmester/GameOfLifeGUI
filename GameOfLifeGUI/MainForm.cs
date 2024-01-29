@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using System.Xml.Schema;
 
 namespace GameOfLifeGUI
 {
@@ -46,6 +47,7 @@ namespace GameOfLifeGUI
             EnableClickEvents();
 
             this.Shown += new EventHandler(this.MainForm_Shown);
+            this.ResizeRedraw = false;
 
             Map = new char[sideBarBeginsAt, this.Height];
 
@@ -65,8 +67,8 @@ namespace GameOfLifeGUI
 
             Point location = new Point();
 
-            location.X = (int)Math.Floor(e.X / 15.0d) * rectSide;
-            location.Y = (int)Math.Floor(e.Y / 15.0d) * rectSide;
+            location.X = (int)Math.Floor(e.X / (decimal)rectSide) * rectSide;
+            location.Y = (int)Math.Floor(e.Y / (decimal)rectSide) * rectSide;
 
             int x = location.X;
             int y = location.Y;
@@ -101,9 +103,7 @@ namespace GameOfLifeGUI
             {
                 for(int y = 0; y < this.Height; y += rectSide)
                 {
-                    Rectangle rect = new Rectangle(new Point(x, y), rectSize);
-
-                    graphics.DrawRectangle(pen, rect);
+                    Kill(x, y);
                 }
             }
         }
@@ -211,6 +211,9 @@ namespace GameOfLifeGUI
             timer.Start();
 
             DisableClickEvents();
+
+            SaveStateButton.Enabled = false;
+            LoadStateButton.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -218,6 +221,9 @@ namespace GameOfLifeGUI
             timer.Stop();
 
             EnableClickEvents();
+
+            SaveStateButton.Enabled = true;
+            LoadStateButton.Enabled = true;
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -248,7 +254,9 @@ namespace GameOfLifeGUI
 
             List<string> lines = File.ReadAllLines(path).ToList();
 
-            foreach(string line in lines)
+            CreateStartingMap();
+
+            foreach (string line in lines)
             {
                 string[] split = line.Split(' ');
 
@@ -304,6 +312,11 @@ namespace GameOfLifeGUI
             }
 
             LoadStateFromFile(path);
+        }
+
+        private void MainForm_Validated(object sender, EventArgs e)
+        {
+
         }
     }
 }

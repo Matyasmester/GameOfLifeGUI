@@ -164,6 +164,7 @@
             this.Text = "Game of Life";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
+            this.Validated += new System.EventHandler(this.MainForm_Validated);
             ((System.ComponentModel.ISupportInitialize)(this.StepIntervalBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
