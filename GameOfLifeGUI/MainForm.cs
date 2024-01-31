@@ -64,7 +64,7 @@ namespace GameOfLifeGUI
         private void onMouseClick(object sender, MouseEventArgs e)
         {
             if (e.X > sideBarBeginsAt) return;
-
+            
             Point location = new Point();
 
             location.X = (int)Math.Floor(e.X / (decimal)rectSide) * rectSide;
@@ -99,7 +99,10 @@ namespace GameOfLifeGUI
 
         private void CreateStartingMap()
         {
-            for(int x = 0; x < sideBarBeginsAt; x += rectSide)
+            generation = 0;
+            UpdateGenerationLabel();
+
+            for (int x = 0; x < sideBarBeginsAt; x += rectSide)
             {
                 for(int y = 0; y < this.Height; y += rectSide)
                 {
@@ -214,6 +217,8 @@ namespace GameOfLifeGUI
 
             SaveStateButton.Enabled = false;
             LoadStateButton.Enabled = false;
+            ClearButton.Enabled = false;
+            StepIntervalBox.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -224,12 +229,19 @@ namespace GameOfLifeGUI
 
             SaveStateButton.Enabled = true;
             LoadStateButton.Enabled = true;
+            ClearButton.Enabled = true;
+            StepIntervalBox.Enabled = true;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             PerformStep();
 
+            UpdateGenerationLabel();
+        }
+
+        private void UpdateGenerationLabel()
+        {
             GenerationLabel.Text = generation.ToString();
         }
 
@@ -317,6 +329,11 @@ namespace GameOfLifeGUI
         private void MainForm_Validated(object sender, EventArgs e)
         {
 
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            CreateStartingMap();
         }
     }
 }

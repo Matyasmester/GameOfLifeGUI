@@ -38,6 +38,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.SaveStateButton = new System.Windows.Forms.Button();
             this.LoadStateButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.StepIntervalBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             // StopGameButton
             // 
             this.StopGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.StopGameButton.Location = new System.Drawing.Point(720, 159);
+            this.StopGameButton.Location = new System.Drawing.Point(720, 131);
             this.StopGameButton.Name = "StopGameButton";
             this.StopGameButton.Size = new System.Drawing.Size(152, 69);
             this.StopGameButton.TabIndex = 1;
@@ -67,7 +68,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(716, 261);
+            this.label1.Location = new System.Drawing.Point(716, 226);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 24);
             this.label1.TabIndex = 2;
@@ -77,7 +78,7 @@
             // 
             this.GenerationLabel.AutoSize = true;
             this.GenerationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.GenerationLabel.Location = new System.Drawing.Point(825, 261);
+            this.GenerationLabel.Location = new System.Drawing.Point(825, 226);
             this.GenerationLabel.Name = "GenerationLabel";
             this.GenerationLabel.Size = new System.Drawing.Size(20, 24);
             this.GenerationLabel.TabIndex = 3;
@@ -87,7 +88,7 @@
             // StepIntervalBox
             // 
             this.StepIntervalBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.StepIntervalBox.Location = new System.Drawing.Point(720, 368);
+            this.StepIntervalBox.Location = new System.Drawing.Point(720, 391);
             this.StepIntervalBox.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -112,7 +113,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(716, 345);
+            this.label2.Location = new System.Drawing.Point(716, 368);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 20);
             this.label2.TabIndex = 5;
@@ -125,7 +126,7 @@
             // SaveStateButton
             // 
             this.SaveStateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.SaveStateButton.Location = new System.Drawing.Point(720, 440);
+            this.SaveStateButton.Location = new System.Drawing.Point(720, 463);
             this.SaveStateButton.Name = "SaveStateButton";
             this.SaveStateButton.Size = new System.Drawing.Size(73, 69);
             this.SaveStateButton.TabIndex = 6;
@@ -136,7 +137,7 @@
             // LoadStateButton
             // 
             this.LoadStateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LoadStateButton.Location = new System.Drawing.Point(799, 440);
+            this.LoadStateButton.Location = new System.Drawing.Point(799, 463);
             this.LoadStateButton.Name = "LoadStateButton";
             this.LoadStateButton.Size = new System.Drawing.Size(73, 69);
             this.LoadStateButton.TabIndex = 7;
@@ -144,12 +145,24 @@
             this.LoadStateButton.UseVisualStyleBackColor = true;
             this.LoadStateButton.Click += new System.EventHandler(this.LoadStateButton_Click);
             // 
+            // ClearButton
+            // 
+            this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ClearButton.Location = new System.Drawing.Point(720, 279);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(123, 54);
+            this.ClearButton.TabIndex = 8;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.LoadStateButton);
             this.Controls.Add(this.SaveStateButton);
             this.Controls.Add(this.label2);
@@ -182,6 +195,7 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Button SaveStateButton;
         private System.Windows.Forms.Button LoadStateButton;
+        private System.Windows.Forms.Button ClearButton;
     }
 }
 
